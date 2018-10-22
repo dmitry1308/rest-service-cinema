@@ -1,10 +1,13 @@
 package ru.schepin.restService.dao;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import ru.schepin.restService.model.User;
 
-public class UserDao implements Dao<User,String>{
+import java.util.List;
+
+public class UserDao implements Dao<User,Integer>{
 
     private SessionFactory sessionFactory;
 
@@ -22,8 +25,19 @@ public class UserDao implements Dao<User,String>{
     }
 
     @Override
-    public User getByKey(String s) {
-        return null;
+    public User getByKey(Integer id) {
+        try (Session session = sessionFactory.openSession()) {
+            return  session.get(User.class, id);
+        }
+    }
+
+    @Override
+    public List<User> getByAllUser() {
+        try (Session session = sessionFactory.openSession()) {
+            Criteria criteria = session.createCriteria(User.class);
+            List<User> list = criteria.list();
+            return list;
+        }
     }
 
     @Override

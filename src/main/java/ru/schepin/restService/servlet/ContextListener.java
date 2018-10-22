@@ -15,7 +15,7 @@ import javax.servlet.annotation.WebListener;
 public class ContextListener implements ServletContextListener {
 
     private SessionFactory sessionFactory;
-    private Dao<User, String> userDao;
+    private Dao<User, Integer> userDao;
 
 
     @Override
