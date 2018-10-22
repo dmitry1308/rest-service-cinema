@@ -4,16 +4,49 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+   <!--Start page-->
     <servlet>
-        <servlet-name>GetStartPageServlet</servlet-name>
-        <servlet-class>ru.schepin.restService.servlet.GetIndexPageServlet</servlet-class>
+        <servlet-name>StartServlet</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.StartServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>GetStartPageServlet</servlet-name>
+        <servlet-name>StartServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!--Add user-->
+    <servlet>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.autorization.AddUserServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/add_user</url-pattern>
+    </servlet-mapping>
+
+    <!--user login-->
+    <servlet>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.autorization.UserLoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <url-pattern>/user_login</url-pattern>
+    </servlet-mapping>
+
+    <!--choice cinemas-->
+    <servlet>
+        <servlet-name>СhoiceOfCinemasServlet</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.cinemas.СhoiceOfCinemasServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>СhoiceOfCinemasServlet</servlet-name>
+        <url-pattern>/choice_cinemas</url-pattern>
+    </servlet-mapping>
 
 
 
