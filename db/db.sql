@@ -17,3 +17,4 @@ create table user
 insert into user (login,password) value
 	('dima','1111'),
 	('ivan','2222');
+  ('vera','3333');
