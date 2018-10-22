@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>GetStartPageServlet</servlet-name>
-        <servlet-class>ru.schepin.restService.GetIndexPageServlet</servlet-class>
+        <servlet-class>ru.schepin.restService.servlet.GetIndexPageServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

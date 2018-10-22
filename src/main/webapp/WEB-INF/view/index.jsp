@@ -13,5 +13,16 @@
 
    <h1 align="center">Кинотеатры</h1>
 
+   <h2>Создание нового пользователя</h2><br />
+
+   <form method="post" action="/">
+
+       <label><input type="text" name="login"></label>Login<br>
+
+       <label><input type="text" name="password"></label>Password<br>
+
+       <input type="submit" value="Ok" name="Ok"><br>
+   </form>
+
 </body>
 </html>
