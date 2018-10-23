@@ -2,8 +2,11 @@ package ru.schepin.restService.servlet;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ru.schepin.restService.dao.Dao;
+import ru.schepin.restService.dao.RowInHallDao;
+import ru.schepin.restService.dao.RowsInHallDaoImpl;
 import ru.schepin.restService.dao.UserDao;
+import ru.schepin.restService.dao.UserDaoImpl;
+import ru.schepin.restService.model.RowInHall;
 import ru.schepin.restService.model.User;
 
 import javax.servlet.ServletContext;
@@ -15,7 +18,8 @@ import javax.servlet.annotation.WebListener;
 public class ContextListener implements ServletContextListener {
 
     private SessionFactory sessionFactory;
-    private Dao<User, Integer> userDao;
+    private UserDao<User, Integer> userDao;
+    private RowInHallDao<RowInHall> rowInHallDao;
 
 
     @Override
@@ -24,8 +28,12 @@ public class ContextListener implements ServletContextListener {
                 servletContextEvent.getServletContext();
 
         sessionFactory = new Configuration().configure().buildSessionFactory();
-        userDao = new UserDao(sessionFactory);
-        servletContext.setAttribute("userDao",userDao);
+
+        userDao = new UserDaoImpl(sessionFactory);
+        rowInHallDao = new RowsInHallDaoImpl(sessionFactory);
+
+        servletContext.setAttribute("userDao", userDao);
+        servletContext.setAttribute("rowInHallDao", rowInHallDao);
     }
 
     @Override

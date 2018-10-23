@@ -2,7 +2,9 @@ package ru.schepin.restService.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@ToString
 @EqualsAndHashCode
 @NoArgsConstructor
 public class User {

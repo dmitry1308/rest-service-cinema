@@ -1,7 +1,7 @@
 package ru.schepin.restService.servlet.autorization;
 
-import ru.schepin.restService.dao.Dao;
 import ru.schepin.restService.dao.UserDao;
+import ru.schepin.restService.dao.UserDaoImpl;
 import ru.schepin.restService.model.User;
 import ru.schepin.restService.util.Urls;
 import ru.schepin.restService.util.Utils;
@@ -14,17 +14,17 @@ import java.io.IOException;
 import java.util.List;
 
 public class UserLoginServlet extends HttpServlet {
-    private Dao<User, Integer> userDao;
+    private UserDao<User, Integer> userDao;
     private boolean isRegistrated = false;
 
     @Override
     public void init() throws ServletException {
         Object userDao = getServletContext().getAttribute("userDao");
-        if (!(userDao instanceof UserDao)) {
+        if (!(userDao instanceof UserDaoImpl)) {
 
             throw new IllegalStateException("You're repo does not initialize!");
         } else {
-            this.userDao = (Dao<User, Integer>) userDao;
+            this.userDao = (UserDao<User, Integer>) userDao;
         }
 
         System.out.println("*************SERVLET UserLoginServlet  IS INIT************");
@@ -45,12 +45,11 @@ public class UserLoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF8");
-
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
         List<User> allUser = userDao.getByAllUser();
+        System.out.println(allUser);
 
         if (allUser.isEmpty() || (!Utils.requestIsValid(req))) {
             doGet(req, resp);
@@ -67,7 +66,7 @@ public class UserLoginServlet extends HttpServlet {
 
     private boolean isFindUser(List<User> allUser, String password, String login) {
         for (User anAllUser : allUser) {
-            if (anAllUser.getPassword().equals(password) && anAllUser.getLogin().equals(login)) {
+            if (anAllUser.getPassword().equals(password)) {
                 return true;
             }
         }

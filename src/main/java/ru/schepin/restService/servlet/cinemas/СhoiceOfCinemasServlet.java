@@ -14,6 +14,6 @@ public class СhoiceOfCinemasServlet extends HttpServlet {
             throws ServletException, IOException {
 
         System.out.println("doGet is work!(Рендеринг страницы)");
-        req.getRequestDispatcher(Urls.index).forward(req, resp);
+        req.getRequestDispatcher(Urls.cinemaHall1).forward(req, resp);
     }
 }

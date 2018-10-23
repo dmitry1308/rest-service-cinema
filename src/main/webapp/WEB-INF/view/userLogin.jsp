@@ -14,19 +14,24 @@
 
 <div align="center">
     <h2>Вход пользователя:</h2><br/>
+</div>
 
-    <form method="post">
-
+<form method="post">
+    <div align="center">
         <label>
             <input type="text" name="login">
         </label>Login<br><br>
 
         <label>
-            <input type="text" name="password">
+            <input type="password" name="password">
         </label>Password<br>
 
-        <input type="submit" value="Войти" name="Ok"><br>
-    </form>
-</div>
+        <input  type="submit" value="Войти" name="Ok"><br><br>
+        <a href="<c:url value="/"/>">Вернуться</a>
+    </div>
+</form>
+
+
+
 </body>
 </html>

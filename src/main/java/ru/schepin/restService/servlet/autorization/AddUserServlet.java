@@ -1,7 +1,7 @@
 package ru.schepin.restService.servlet.autorization;
 
-import ru.schepin.restService.dao.Dao;
 import ru.schepin.restService.dao.UserDao;
+import ru.schepin.restService.dao.UserDaoImpl;
 import ru.schepin.restService.model.User;
 import ru.schepin.restService.util.Urls;
 import ru.schepin.restService.util.Utils;
@@ -13,17 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class AddUserServlet extends HttpServlet {
-    private Dao<User, String> userDao;
+    private UserDao<User, String> userDao;
     private boolean isRegistrated = false;
 
+    @SuppressWarnings("unchecked")
     @Override
     public void init() throws ServletException {
         Object userDao = getServletContext().getAttribute("userDao");
-        if (!(userDao instanceof UserDao)) {
+        if (!(userDao instanceof UserDaoImpl)) {
 
             throw new IllegalStateException("You're repo does not initialize!");
         } else {
-            this.userDao = (Dao<User, String>) userDao;
+            this.userDao = (UserDao<User, String>) userDao;
         }
 
         System.out.println("*************SERVLET AddUserServlet  IS INIT************");
@@ -44,8 +45,6 @@ public class AddUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF8");
-
         if (!Utils.requestIsValid(req)) {
             doGet(req, resp);
         } else {

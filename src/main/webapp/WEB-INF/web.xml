@@ -48,6 +48,28 @@
         <url-pattern>/choice_cinemas</url-pattern>
     </servlet-mapping>
 
+    <!--choice cinemas-->
+    <servlet>
+        <servlet-name>Cinema1Hall1</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.cinemas.cinema1.Cinema1Hall1</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Cinema1Hall1</servlet-name>
+        <url-pattern>/cinemaHall1</url-pattern>
+    </servlet-mapping>
+
+    <!--Encoding filter UTF-8-->
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>ru.schepin.restService.servlet.filters.EncodingFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
+
 
 
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
+
+    <class name="ru.schepin.restService.model.RowInHall" table="cinema1_hall1">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="numberOfRow" column="row"/>
+        <property name="place1" column="place1"/>
+        <property name="place2" column="place2"/>
+        <property name="place3" column="place3"/>
+    </class>
+</hibernate-mapping>
+
+

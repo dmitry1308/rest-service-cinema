@@ -22,11 +22,11 @@
         </label>Login<br><br>
 
         <label>
-            <input type="text" name="password">
+            <input type="password" name="password">
         </label>Password<br>
 
-        <input type="submit" value="Зарегистрироваться" name="Ok"><br>
-
+        <input type="submit" value="Зарегистрироваться" name="Ok"><br><br>
+        <a href="<c:url value="/"/>">Вернуться</a>
     </form>
 </div>
 </body>

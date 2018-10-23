@@ -1,24 +1,25 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Dmitry
-  Date: 22.10.2018
-  Time: 11:44
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Выбор кинотеатра</title>
-</head>
-<body>
-<div align="center">
-    <h2>Выберите кинотеатр:</h2><br/>
+    <title>Title</title>
 
-    <form method="post">
-        <input type="submit" value="Кинотеатр 1" name="Ok"><br><br>
-        <input type="submit" value="Кинотеатр 2" name="Ok"><br>
+</head>
+<br>
+
+<h1 align="center">Выберите зал:</h1>
+
+<div align="center">
+    <form method="post" action="<c:url value='/cinemaHall1'/>">
+        <input type="submit" value="Зaл 1" name="Ok">
+    </form>
+
+    <form method="post" action="<c:url value='/cinemaHall1'/>">
+        <input type="submit" value="Зaл 2" name="Ok"><br>
     </form>
 </div>
 
+
 </body>
 </html>
+
