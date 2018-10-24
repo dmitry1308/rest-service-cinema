@@ -1,12 +1,11 @@
 package ru.schepin.restService.model;
 
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @ToString
 @EqualsAndHashCode
-@NoArgsConstructor
+
 public class User {
     private int id;
     private String  login ;
@@ -21,6 +20,9 @@ public class User {
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public User() {
     }
 
     public int getId() {

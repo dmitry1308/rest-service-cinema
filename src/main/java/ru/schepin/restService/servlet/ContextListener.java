@@ -18,7 +18,7 @@ import javax.servlet.annotation.WebListener;
 public class ContextListener implements ServletContextListener {
 
     private SessionFactory sessionFactory;
-    private UserDao<User, Integer> userDao;
+    private UserDao<User, Integer,String> userDao;
     private RowInHallDao<RowInHall,Integer> rowInHallDao;
 
 

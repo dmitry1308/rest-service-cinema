@@ -7,7 +7,7 @@ import ru.schepin.restService.model.User;
 
 import java.util.List;
 
-public class UserDaoImpl implements UserDao<User,Integer> {
+public class UserDaoImpl implements UserDao<User,Integer,String> {
 
     private SessionFactory sessionFactory;
 
@@ -31,6 +31,13 @@ public class UserDaoImpl implements UserDao<User,Integer> {
         }
     }
 
+    @Override
+    public User getByPassword(String password) {
+        try (Session session = sessionFactory.openSession()) {
+            return  session.get(User.class, password);
+        }
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public List<User> getByAllUser() {
@@ -47,6 +54,10 @@ public class UserDaoImpl implements UserDao<User,Integer> {
 
     @Override
     public void delete(User user) {
-
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.delete(user);
+            session.getTransaction().commit();
+        }
     }
 }

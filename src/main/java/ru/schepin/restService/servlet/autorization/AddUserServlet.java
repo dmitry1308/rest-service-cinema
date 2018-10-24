@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class AddUserServlet extends HttpServlet {
-    private UserDao<User, String> userDao;
+    private UserDao<User,Integer, String> userDao;
     private boolean isRegistrated = false;
 
     @SuppressWarnings("unchecked")
@@ -24,7 +24,7 @@ public class AddUserServlet extends HttpServlet {
 
             throw new IllegalStateException("You're repo does not initialize!");
         } else {
-            this.userDao = (UserDao<User, String>) userDao;
+            this.userDao = (UserDao<User,Integer, String>) userDao;
         }
 
         System.out.println("*************SERVLET AddUserServlet  IS INIT************");

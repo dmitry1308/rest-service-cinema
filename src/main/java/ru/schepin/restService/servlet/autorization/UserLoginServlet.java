@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class UserLoginServlet extends HttpServlet {
-    private UserDao<User, Integer> userDao;
+    private UserDao<User, Integer, String> userDao;
     private boolean isRegistrated = false;
 
     @Override
@@ -24,7 +24,7 @@ public class UserLoginServlet extends HttpServlet {
 
             throw new IllegalStateException("You're repo does not initialize!");
         } else {
-            this.userDao = (UserDao<User, Integer>) userDao;
+            this.userDao = (UserDao<User, Integer,String>) userDao;
         }
 
         System.out.println("*************SERVLET UserLoginServlet  IS INIT************");

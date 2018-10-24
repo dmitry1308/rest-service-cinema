@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class StartServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         System.out.println("doGet is work!(Рендеринг страницы startPage)");
