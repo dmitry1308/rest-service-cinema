@@ -50,12 +50,12 @@
 
     <!--choice cinemas-->
     <servlet>
-        <servlet-name>Cinema1Hall1</servlet-name>
-        <servlet-class>ru.schepin.restService.servlet.cinemas.cinema1.Cinema1Hall1</servlet-class>
+        <servlet-name>Cinema1Hall1Servlet</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.cinemas.cinema1.Cinema1Hall1Servlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Cinema1Hall1</servlet-name>
+        <servlet-name>Cinema1Hall1Servlet</servlet-name>
         <url-pattern>/cinemaHall1</url-pattern>
     </servlet-mapping>
 

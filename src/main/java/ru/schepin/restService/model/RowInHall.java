@@ -2,10 +2,9 @@ package ru.schepin.restService.model;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
@@ -23,6 +22,9 @@ public class RowInHall {
         this.place1 = place1;
         this.place2 = place2;
         this.place3 = place3;
+    }
+
+    public RowInHall() {
     }
 
     public int getId() {

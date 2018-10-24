@@ -3,7 +3,7 @@ package ru.schepin.restService.servlet;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import ru.schepin.restService.dao.RowInHallDao;
-import ru.schepin.restService.dao.RowsInHallDaoImpl;
+import ru.schepin.restService.dao.RowInHallDaoImpl;
 import ru.schepin.restService.dao.UserDao;
 import ru.schepin.restService.dao.UserDaoImpl;
 import ru.schepin.restService.model.RowInHall;
@@ -30,7 +30,7 @@ public class ContextListener implements ServletContextListener {
         sessionFactory = new Configuration().configure().buildSessionFactory();
 
         userDao = new UserDaoImpl(sessionFactory);
-        rowInHallDao = new RowsInHallDaoImpl(sessionFactory);
+        rowInHallDao = new RowInHallDaoImpl(sessionFactory);
 
         servletContext.setAttribute("userDao", userDao);
         servletContext.setAttribute("rowInHallDao", rowInHallDao);

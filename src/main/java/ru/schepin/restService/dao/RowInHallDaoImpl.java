@@ -7,10 +7,10 @@ import ru.schepin.restService.model.RowInHall;
 
 import java.util.List;
 
-public class RowsInHallDaoImpl implements RowInHallDao<RowInHall> {
+public class RowInHallDaoImpl implements RowInHallDao<RowInHall> {
     private SessionFactory sessionFactory;
 
-    public RowsInHallDaoImpl(SessionFactory sessionFactory) {
+    public RowInHallDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
@@ -23,4 +23,14 @@ public class RowsInHallDaoImpl implements RowInHallDao<RowInHall> {
             return (List<RowInHall>) criteria.list();
         }
     }
+
+    @Override
+    public void update(RowInHall rowInHall) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(rowInHall);
+        session.getTransaction().commit();
+    }
+
+
 }

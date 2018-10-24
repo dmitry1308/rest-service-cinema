@@ -4,4 +4,6 @@ import java.util.List;
 
 public interface RowInHallDao<Entity> {
     List<Entity> getByAllRows();
+
+    void update(Entity entity);
 }

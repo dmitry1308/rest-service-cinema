@@ -14,7 +14,7 @@
 <body>
 <h2>Выберите место:</h2><br/>
 
-<!--<c:out value="${requestScope.rowInHall.numberOfRow}"/>   получение конкретного поля сущности  -->
+<%--<c:out value="${requestScope.rowInHall.numberOfRow}"/>   получение конкретного поля сущности  --%>
 
 <form method="post" action="">
 
@@ -27,12 +27,12 @@
 
 
 <div align="center">
-    <c:forEach var="rowInHall" items="${requestScope.rowInHalls}">
+    <c:forEach var="row" items="${requestScope.rowInHall}">
         <ul>
-            <li>Ряд: <c:out value="${rowInHall.numberOfRow}"/></li>
-            <li>Место 1: <c:out value="${rowInHall.place1}"/></li>
-            <li>Место 2: <c:out value="${rowInHall.place2}"/></li>
-            <li>Место 3: <c:out value="${rowInHall.place3}"/></li>
+            <li>Ряд: <c:out value="${row.numberOfRow}"/></li>
+            <li>Место 1: <c:out value="${row.place1}"/></li>
+            <li>Место 2: <c:out value="${row.place2}"/></li>
+            <li>Место 3: <c:out value="${row.place3}"/></li>
         </ul>
         <hr />
     </c:forEach>
