@@ -37,27 +37,68 @@
         <url-pattern>/user_login</url-pattern>
     </servlet-mapping>
 
-    <!--choice cinemas-->
+
+
+
+
+
+
+
+
+    <!--choice hallInCinema1-->
     <servlet>
-        <servlet-name>СhoiceOfCinemasServlet</servlet-name>
-        <servlet-class>ru.schepin.restService.servlet.cinemas.СhoiceOfCinemasServlet</servlet-class>
+        <servlet-name>СhoiceHallInCinema1</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.cinemas.cinema1.СhoiceHallInCinema1</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>СhoiceOfCinemasServlet</servlet-name>
-        <url-pattern>/choice_cinemas</url-pattern>
+        <servlet-name>СhoiceHallInCinema1</servlet-name>
+        <url-pattern>/choiceHallsinCinema1</url-pattern>
     </servlet-mapping>
 
     <!--choice cinemas-->
     <servlet>
-        <servlet-name>Cinema1Hall1Servlet</servlet-name>
-        <servlet-class>ru.schepin.restService.servlet.cinemas.cinema1.Cinema1Hall1Servlet</servlet-class>
+        <servlet-name>ChoiceСinema</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.cinemas.СhoiceCinema</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Cinema1Hall1Servlet</servlet-name>
-        <url-pattern>/cinemaHall1</url-pattern>
+        <servlet-name>ChoiceСinema</servlet-name>
+        <url-pattern>/choiceСinema</url-pattern>
     </servlet-mapping>
+
+    <!--cinema1hall1-->
+    <servlet>
+        <servlet-name>Hall1InCinema1</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.cinemas.cinema1.halls.Cinema1Hall1Servlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Hall1InCinema1</servlet-name>
+        <url-pattern>/hall1inCinema1</url-pattern>
+    </servlet-mapping>
+
+
+    <!--cinema1hall1-->
+    <servlet>
+        <servlet-name>ZeroPlaceServlet</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.ZeroingPlaceServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ZeroPlaceServlet</servlet-name>
+        <url-pattern>/ZeroPlaceServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+
+
+
+
+
 
     <!--Encoding filter UTF-8-->
     <filter>

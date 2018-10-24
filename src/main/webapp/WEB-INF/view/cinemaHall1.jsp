@@ -38,5 +38,11 @@
     </c:forEach>
 
 </div>
+
+<form method="post" action="<c:url value='/ZeroPlaceServlet'/>">
+    <input type="submit" value="Сбросить всю бронь" name="Ok"/>
+</form>
+
+
 </body>
 </html>

@@ -17,7 +17,7 @@
 </div>
 
 <form method="post">
-    <div align="center">
+
         <label>
             <input type="text" name="login">
         </label>Login<br><br>
@@ -28,7 +28,7 @@
 
         <input  type="submit" value="Войти" name="Ok"><br><br>
         <a href="<c:url value="/"/>">Вернуться</a>
-    </div>
+
 </form>
 
 

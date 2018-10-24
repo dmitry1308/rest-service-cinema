@@ -19,7 +19,7 @@ public class ContextListener implements ServletContextListener {
 
     private SessionFactory sessionFactory;
     private UserDao<User, Integer> userDao;
-    private RowInHallDao<RowInHall> rowInHallDao;
+    private RowInHallDao<RowInHall,Integer> rowInHallDao;
 
 
     @Override

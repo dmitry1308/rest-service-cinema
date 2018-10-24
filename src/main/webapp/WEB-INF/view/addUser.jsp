@@ -14,7 +14,7 @@
 
 <div align="center">
     <h2>Создание нового пользователя</h2><br/>
-
+</div>
     <form method="post">
 
         <label>
@@ -25,9 +25,9 @@
             <input type="password" name="password">
         </label>Password<br>
 
-        <input type="submit" value="Зарегистрироваться" name="Ok"><br><br>
+        <input type="submit"  value="Зарегистрироваться" name="Ok"><br><br>
         <a href="<c:url value="/"/>">Вернуться</a>
     </form>
-</div>
+
 </body>
 </html>

@@ -1,10 +1,10 @@
-package ru.schepin.restService.servlet.cinemas.cinema1;
+package ru.schepin.restService.servlet.cinemas.cinema1.halls;
 
 import ru.schepin.restService.dao.RowInHallDao;
 import ru.schepin.restService.dao.RowInHallDaoImpl;
 import ru.schepin.restService.model.RowInHall;
-import ru.schepin.restService.util.OperationBooking;
 import ru.schepin.restService.util.Urls;
+import ru.schepin.restService.util.Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class Cinema1Hall1Servlet extends HttpServlet {
-    private RowInHallDao<RowInHall> rowInHallDao;
+    private RowInHallDao<RowInHall, Integer> rowInHallDao;
     private String row;
     private String place;
 
@@ -25,7 +25,7 @@ public class Cinema1Hall1Servlet extends HttpServlet {
 
             throw new IllegalStateException("You're repo does not initialize!");
         } else {
-            this.rowInHallDao = (RowInHallDao<RowInHall>) rowInHallDao;
+            this.rowInHallDao = (RowInHallDao<RowInHall, Integer>) rowInHallDao;
         }
 
         System.out.println("*************SERVLET Cinema1Hall1Servlet  IS INIT************");
@@ -40,17 +40,23 @@ public class Cinema1Hall1Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
         row = req.getParameter("row");
         place = req.getParameter("place");
 
+        String zero = req.getParameter("zero");
+
         List<RowInHall> rowInHall = rowInHallDao.getByAllRows();
 
-        if (!checkRowAndPlace(row, place)) {
+        if (!Utils.checkRowAndPlace(row, place)) {
             drawPage(req, resp, rowInHall);
         } else {
-            OperationBooking operationBooking = new OperationBooking(row, place, rowInHall);
-            RowInHall rowInHallForBase = operationBooking.toBook();
+            int rowInt = Integer.valueOf(row);
+            int placeInt = Integer.valueOf(place);
+            RowInHall neededRow = rowInHallDao.getByKey(rowInt);
+            RowInHall rowInHallForBase = toBook(placeInt, neededRow);
             rowInHallDao.update(rowInHallForBase);
+            rowInHall = rowInHallDao.getByAllRows();
             drawPage(req, resp, rowInHall);
         }
     }
@@ -61,27 +67,14 @@ public class Cinema1Hall1Servlet extends HttpServlet {
         req.getRequestDispatcher(Urls.cinemaHall1).forward(req, resp);
     }
 
-    private boolean checkRowAndPlace(String row, String place) {
-        int rowInt;
-        int placeInt;
-
-        if (row == null && place == null) {
-            return false;
+    private RowInHall toBook(int placeInt, RowInHall neededRow) {
+        if (placeInt == 1) {
+            neededRow.setPlace1("engaged");
+        } else if (placeInt == 2) {
+            neededRow.setPlace2("engaged");
+        } else {
+            neededRow.setPlace3("engaged");
         }
-        if (row.equals("")) {
-            return false;
-        }
-
-        if (place.equals("")) {
-            return false;
-        }
-
-        rowInt = Integer.valueOf(row);
-        placeInt = Integer.valueOf(place);
-
-
-        return (placeInt <= 3 && placeInt >= 1) && (rowInt <= 3 && rowInt >= 1);
-
-
+        return neededRow;
     }
 }

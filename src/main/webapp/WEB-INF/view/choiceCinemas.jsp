@@ -7,15 +7,15 @@
 </head>
 <br>
 
-<h1 align="center">Выберите зал:</h1>
+<h1 align="center">Выберите кинотеатр:</h1>
 
 <div align="center">
-    <form method="post" action="<c:url value='/cinemaHall1'/>">
-        <input type="submit" value="Зaл 1" name="Ok">
+    <form method="get" action="<c:url value='/choiceHallsinCinema1'/>">
+        <input type="submit" value="Кинотеатр 1" name="Ok">
     </form>
 
-    <form method="post" action="<c:url value='/cinemaHall1'/>">
-        <input type="submit" value="Зaл 2" name="Ok"><br>
+    <form method="get" action="<c:url value='/choiceHallsinCinema1'/>">
+        <input type="submit" value="Кинотеатр 2" name="Ok"><br>
     </form>
 </div>
 

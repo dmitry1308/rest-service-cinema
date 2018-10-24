@@ -7,8 +7,15 @@ import ru.schepin.restService.model.RowInHall;
 
 import java.util.List;
 
-public class RowInHallDaoImpl implements RowInHallDao<RowInHall> {
+public class RowInHallDaoImpl implements RowInHallDao<RowInHall, Integer> {
     private SessionFactory sessionFactory;
+
+    @Override
+    public RowInHall getByKey(Integer id) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.get(RowInHall.class, id);
+        }
+    }
 
     public RowInHallDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
