@@ -64,9 +64,9 @@ public class UserLoginServlet extends HttpServlet {
         }
     }
 
-    private boolean isFindUser(List<User> allUser, String password, String login) {
+    private boolean isFindUser(List<User> allUser, String login, String password) {
         for (User anAllUser : allUser) {
-            if (anAllUser.getPassword().equals(password)) {
+            if (anAllUser.getPassword().equals(password)&& (anAllUser.getLogin().equals(login))) {
                 return true;
             }
         }
