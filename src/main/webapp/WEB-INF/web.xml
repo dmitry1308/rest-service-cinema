@@ -1,21 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0">
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
 
+
+    <!--Start page-->
     <servlet>
-        <servlet-name>GetStartPageServlet</servlet-name>
-        <servlet-class>ru.schepin.restService.GetIndexPageServlet</servlet-class>
+        <servlet-name>StartServlet</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.StartServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>GetStartPageServlet</servlet-name>
+        <servlet-name>StartServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!--Add user-->
+    <servlet>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.autorization.AddUserServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/add_user</url-pattern>
+    </servlet-mapping>
+
+    <!--user login-->
+    <servlet>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.autorization.UserLoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <url-pattern>/user_login</url-pattern>
+    </servlet-mapping>
 
 
+    <!--choice hallInCinema1-->
+    <servlet>
+        <servlet-name>СhoiceHallInCinema1</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.cinemas.cinema1.СhoiceHallInCinema1</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>СhoiceHallInCinema1</servlet-name>
+        <url-pattern>/choiceHallsinCinema1</url-pattern>
+    </servlet-mapping>
+
+    <!--choice cinemas-->
+    <servlet>
+        <servlet-name>ChoiceСinema</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.cinemas.СhoiceCinema</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChoiceСinema</servlet-name>
+        <url-pattern>/choiceСinema</url-pattern>
+    </servlet-mapping>
+
+    <!--cinema1hall1-->
+    <servlet>
+        <servlet-name>Hall1InCinema1</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.cinemas.cinema1.halls.Cinema1Hall1Servlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Hall1InCinema1</servlet-name>
+        <url-pattern>/hall1inCinema1</url-pattern>
+    </servlet-mapping>
+
+
+    <!--cinema1hall1-->
+    <servlet>
+        <servlet-name>ZeroPlaceServlet</servlet-name>
+        <servlet-class>ru.schepin.restService.servlet.ZeroingPlaceServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ZeroPlaceServlet</servlet-name>
+        <url-pattern>/ZeroPlaceServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <!--Encoding filter UTF-8-->
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>ru.schepin.restService.servlet.filters.EncodingFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
 
 
 </web-app>
