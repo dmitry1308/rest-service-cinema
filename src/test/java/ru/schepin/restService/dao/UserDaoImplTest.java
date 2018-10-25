@@ -30,6 +30,7 @@ public class UserDaoImplTest {
         if (userDao.getByKey(id) != null) {
             userDao.delete(user);
         }
+        sessionFactory.close();
     }
 
 

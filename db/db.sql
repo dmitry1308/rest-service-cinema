@@ -14,11 +14,6 @@ create table user
 	)
     default char set cp1251;
 
-insert into user (login,password) value
-	('dima','1111'),
-	('vera','2222'),
-  ('kate','3333');
-
 create table cinema1_hall1
 	(
 		id int auto_increment primary key,

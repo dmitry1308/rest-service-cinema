@@ -2,9 +2,10 @@ package ru.schepin.restService.servlet.cinemas.cinema1.halls;
 
 import ru.schepin.restService.dao.RowInHallDao;
 import ru.schepin.restService.dao.RowInHallDaoImpl;
+import ru.schepin.restService.model.NeededPlace;
 import ru.schepin.restService.model.RowInHall;
+import ru.schepin.restService.util.HandlerOfBookingPlace;
 import ru.schepin.restService.util.Urls;
-import ru.schepin.restService.util.Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +16,6 @@ import java.util.List;
 
 public class Cinema1Hall1Servlet extends HttpServlet {
     private RowInHallDao<RowInHall, Integer> rowInHallDao;
-    private String row;
-    private String place;
 
     @Override
     public void init() throws ServletException {
@@ -40,22 +39,17 @@ public class Cinema1Hall1Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-        row = req.getParameter("row");
-        place = req.getParameter("place");
-
-        String zero = req.getParameter("zero");
-
         List<RowInHall> rowInHall = rowInHallDao.getByAllRows();
 
-        if (!Utils.checkRowAndPlace(row, place)) {
+        HandlerOfBookingPlace handlerOfBookingPlace = new HandlerOfBookingPlace();
+        NeededPlace neededPlace = handlerOfBookingPlace.process(req, resp);
+
+        if (neededPlace == null) {
             drawPage(req, resp, rowInHall);
-        } else {
-            int rowInt = Integer.valueOf(row);
-            int placeInt = Integer.valueOf(place);
-            RowInHall neededRow = rowInHallDao.getByKey(rowInt);
-            RowInHall rowInHallForBase = toBook(placeInt, neededRow);
-            rowInHallDao.update(rowInHallForBase);
+        }else {
+            RowInHall rowFromBaseToChange = rowInHallDao.getByKey(neededPlace.getRow());
+            RowInHall rowFromBaseChanged = toBook(neededPlace.getPlace(), rowFromBaseToChange);
+            rowInHallDao.update(rowFromBaseChanged);
             rowInHall = rowInHallDao.getByAllRows();
             drawPage(req, resp, rowInHall);
         }
@@ -76,5 +70,9 @@ public class Cinema1Hall1Servlet extends HttpServlet {
             neededRow.setPlace3("engaged");
         }
         return neededRow;
+    }
+
+    public RowInHall toBookTest(int placeInt, RowInHall neededRow) {
+        return toBook(placeInt, neededRow);
     }
 }
